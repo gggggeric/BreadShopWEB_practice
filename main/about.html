@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Bread Ribbon</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        /* Scale down the carousel */
+        .carousel {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        /* Set a fixed height and ensure the images are uniform */
+        .carousel-item img {
+            height: 400px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        /* Style the bread product cards */
+        .product-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+            height: 100%; /* Ensure uniform height for all product cards */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Ensure proper spacing between elements */
+        }
+
+        /* Set uniform image size */
+        .product-card img {
+            width: 100%;
+            height: 180px; /* Fixed height for product images */
+            object-fit: cover; /* Cover the image area without distortion */
+        }
+
+        /* Ensure text height is the same across cards */
+        .product-card h5 {
+            min-height: 50px; /* Ensure title takes the same space */
+        }
+
+        .product-card p {
+            min-height: 60px; /* Ensure description takes the same space */
+        }
+
+        /* Increase the size of the logo */
+        .navbar-brand img {
+            width: 70px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img src="breadribbon.png" alt="Bread Ribbon Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Categories
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Softbread</a>
+                <a class="dropdown-item" href="#">Hardbread</a>
+              </div> -->
+              <a class="nav-link" href="about.html">About <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0" onsubmit="return searchProducts(event)">
+            <input id="searchInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+    <div class="container mt-5">
+        <h1 class="text-center">About Us</h1>
+        <div class="developer">
+            <h2>Geric Morit</h2>
+            <p>Geric is a passionate web developer with experience in creating responsive and user-friendly web applications. His love for baking inspired the creation of Bread Ribbon, where he combines technology with delicious bread recipes.</p>
+        </div>
+        <div class="developer">
+            <h2>Jeremiah Estillore</h2>
+            <p>Jeremiah is a creative designer and developer who specializes in crafting beautiful and functional web experiences. He brings a unique artistic vision to Bread Ribbon, ensuring every aspect of the site reflects the warmth and joy of baking.</p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+    <script>
+        function searchProducts(event) {
+            event.preventDefault(); // Prevent form submission
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const products = document.querySelectorAll('.product-card');
+
+            products.forEach(product => {
+                const title = product.querySelector('h5').textContent.toLowerCase();
+                const description = product.querySelector('p').textContent.toLowerCase();
+                if (title.includes(query) || description.includes(query)) {
+                    product.style.display = 'block'; // Show product if it matches the search
+                } else {
+                    product.style.display = 'none'; // Hide product if it doesn't match
+                }
+            });
+        }
+    </script>
+</body>
+</html>
